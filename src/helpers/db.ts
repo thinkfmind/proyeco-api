@@ -7,6 +7,7 @@ import Equipo from '../models/equipo.model';
 import Alerta from '../models/alerta.model';
 import Historico from '../models/historico.model';
 import Actividad from '../models/actividad.model';
+import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -25,6 +26,8 @@ mongoose.connect(mongoUri, connectionOptions).then(() => migration());
 const migration = async () => {
   const documents = await Linea.countDocuments();
   if (documents === 0) {
+    const password = await bcrypt.hash(process.env.ADMIN_PASSWORD!, 10);
+    await User.create({username: 'admin', password, name: "Admin", role: "Admin", picture: ''})
     const linea1 = await Linea.create({ name: 'Línea 1', lugar: 'Undefined' });
     const linea2 = await Linea.create({ name: 'Línea 2', lugar: 'Undefined' });
     const linea3 = await Linea.create({ name: 'Línea 3', lugar: 'Undefined' });
