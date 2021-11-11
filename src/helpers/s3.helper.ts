@@ -18,7 +18,7 @@ export const uploadS3 = (file: any, path: string) => {
   const fileType = myFile[myFile.length - 1];
 
   const params = {
-    Bucket: 'devenv-s3',
+    Bucket: process.env.AWS_BUCKET_NAME!,
     Key: `${path}/${uuidv4()}.${fileType}`,
     Body: file.buffer ?? 'asd',
   };
