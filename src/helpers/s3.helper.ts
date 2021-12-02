@@ -39,7 +39,7 @@ export const uploadPdfS3 = (file: any, equipo: string, empresa: string) => {
   if (fileType !== 'pdf') throw new Error('No es un pdf');
 
   const params = {
-    Bucket: 'devenv-s3',
+    Bucket: process.env.AWS_BUCKET_NAME!,
     Key: `historicos/${equipo}-${empresa}-${date}.${fileType}`,
     Body: file.buffer ?? 'asd',
   };
@@ -62,7 +62,7 @@ export const getFromS3 = (infos: any) => {
   for (let i = 0; i < infos.length; i += 1) {
     const passthrough = new PassThrough();
     s3bucket
-      .getObject({ Bucket: 'devenv-s3', Key: `${infos[i].filename}` })
+      .getObject({ Bucket: process.env.AWS_BUCKET_NAME!, Key: `${infos[i].filename}` })
       .createReadStream()
       .pipe(passthrough);
     // name parameter is the name of the file that the file needs to be when unzipped.
