@@ -69,9 +69,11 @@ const migration = async () => {
     await Estacion.create({ name: 'Normal', linea: linea2.id });
     await Estacion.create({ name: 'San Cosme', linea: linea2.id });
     await Estacion.create({ name: 'Revolución', linea: linea2.id });
+    await Estacion.create({ name: 'Pino Suárez', linea: linea2.id });
     await Estacion.create({ name: 'Hidalgo', linea: linea2.id });
     await Estacion.create({ name: 'Bellas Artes', linea: linea2.id });
     await Estacion.create({ name: 'Allende', linea: linea2.id });
+    await Estacion.create({ name: 'Ermita', linea: linea2.id });
     await Estacion.create({ name: 'Zócalo/Tenochtitlan', linea: linea2.id });
     await Estacion.create({ name: 'San Antonio Abad', linea: linea2.id });
     await Estacion.create({ name: 'Chabacano', linea: linea2.id });
@@ -99,6 +101,7 @@ const migration = async () => {
     await Estacion.create({ name: 'División del Norte', linea: linea3.id });
     await Estacion.create({ name: 'Coyoacán', linea: linea3.id });
     await Estacion.create({ name: 'Viveros', linea: linea3.id });
+    await Estacion.create({ name: 'Zapata', linea: linea3.id });
     await Estacion.create({ name: 'Miguel Ángel de Quevedo', linea: linea3.id });
     await Estacion.create({ name: 'Copilco', linea: linea3.id });
     await Estacion.create({ name: 'Universidad', linea: linea3.id });
